@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <div class="container p-5">
+        <form style="text-align: left; margin-left: 400px" action="/cost" method="post">
+            <div class="form-group">
+                <strong>Product</strong><span style="color: blue;">(required)</span>:
+                <input name="name" type="text" autocomplete="off" autofocus placeholder="product's name">
+            </div>
+            <button style="margin-left: 100px;" class="btn btn-success" type="submit">Calculate cost</button>
+        </form>
+    </div>
+
+{% endblock %}

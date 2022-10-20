@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <div class="container p-5">
+        <form style="text-align: left; margin-left: 400px" action="/add_formula" method="post">
+            <datalist id="product">
+                {% for item in items %}
+
+                    <option>{{ item.name }}</option>
+
+                {% endfor %}
+            </datalist>
+            <div class="form-group">
+                <strong>Item</strong> <span style="color: blue;">(required)</span>:
+                <input name="name" type="text" placeholder="Product's name" list="product">
+            </div>
+            <div class="form-group">
+                <strong>Material</strong> <span style="color: blue;">(required)</span>
+                <select name="material">
+                    <option selected disabled>choose</option>
+                    {% for item in items %}
+
+                        <option>{{ item.name }}</option>
+
+                    {% endfor %}
+                </select>
+                <!--<input name="material" type="text" autocomplete="off" placeholder="Material's name" list="product"> -->
+            </div>
+            <div class="form-group">
+                <strong>Quantity</strong> <span style="color: blue;">(required)</span>
+                <input name="quantity" type="number" autocomplete="off" placeholder="quantity of material" min="0" step="any">
+            </div>
+            <button style="margin-left: 100px;" class="btn btn-success" type="submit">Add formula</button>
+        </form>
+    </div>
+
+{% endblock %}

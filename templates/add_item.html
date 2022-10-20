@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <div class="container p-5">
+        <form style="text-align: left; margin-left: 400px" action="/add_item" method="post">
+            <div class="form-group">
+                <strong>Item</strong> <span style="color: blue;">(require)</span>:
+                <input autocomplete="off" name="name" placeholder="Item's name" autofocus type="text">
+            </div>
+            <div class="form-group">
+                <strong>Price</strong> <span style="color: blue;">(require)</span>;
+                <input autocomplete="off" name="price" placeholder="Price at city" min="0" type="number" step="any">
+            </div>
+            <div class="form-group">
+                <strong>Nutrition</strong> <span style="color:blue;"></span>
+                <input autocomplete="off" name="nutrition" placeholder="Nutrition" min="0" type="number" step="any">
+            </div>
+            <button style="margin-left: 100px;" class="btn btn-success" type="submit">Add Item</button>
+        </form>
+    </div>
+
+{% endblock %}

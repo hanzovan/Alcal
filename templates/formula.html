@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}
+
+    formula
+
+{% endblock %}
+{% block main %}
+
+    <div class="container-fluid">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>Material</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for material in materials %}
+
+                    <tr>
+                        <td><p class="text-primary font-weight-bold">{{ material.name }}</p></td>
+                        <td><p class="text-danger font-weight-bold">{{ material.quantity }}</p></td>
+                    </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

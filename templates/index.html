@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <div class="container-fluid">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>City Profit</th>
+                    <th>Island Profit</th>
+                    <th>Profit</th>
+                    <th>Updated</th>
+
+                    {% if session.user_id %}
+
+                        <th></th>
+
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+
+                    <tr>
+                        <td>
+                            <form action="/formula" method="post">
+                                <input name="id" type="hidden" value="{{ item.id }}">
+                                <button class="btn btn-link"><p class="text-primary font-weight-bold">{{ item.name }}</p></button>
+                            </form>
+                        </td>
+                        <td>{{ item.price }}</td>
+                        <td>{{ item.city_profit }}</td>
+                        <td>{{ item.island_profit }}</td>
+                        <td><p class="text-danger font-weight-bold">{{ item.profit }}</p></td>
+                        <td>
+                            {% if item.updated_from == "few days ago" %}
+
+                                <p class="text-success font-weight-bold">{{ item.updated_from }}</p>
+
+                            {% elif item.updated_from == "a week ago" %}
+
+                                <p class="text-primary font-weight-bold">{{ item.updated_from }}</p>
+
+                            {% else %}
+
+                                <p class="text-danger font-weight-bold">{{ item.updated_from }}</p>
+
+                            {% endif %}
+                        </td>
+
+                        {% if session.user_id %}
+
+                            <td>
+                            <form action="/pre_update" method="post" onSubmit="return confirm('Do you really want to change this item information?');">
+                                <input name="id" type="hidden" value="{{ item.id }}">
+                                <button class="btn btn-info" type="submit">Update</button>
+                            </form>
+                        </td>
+
+                        {% endif %}
+                    </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
